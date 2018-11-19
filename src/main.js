@@ -33,8 +33,8 @@ const router = new VueRouter({
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App></App>'
+    el: '#app',
+    router,
+    components: { App },
+    template: '<App></App>'
 });
