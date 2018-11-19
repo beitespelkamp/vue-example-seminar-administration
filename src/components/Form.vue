@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import { SeminarOptions } from "../const.js"
+
 export default {
   name: "Form",
   data() {
@@ -66,14 +68,7 @@ export default {
         date: ""
       },
       result: "",
-      options: [
-        { value: null, text: "Please select a seminar..." },
-        { value: "Introductory Event", text: "Introductory Event" },
-        { value: "Excel Basics", text: "Excel Basics" },
-        { value: "SAP Basics", text: "SAP Basics" },
-        { value: "PowerPoint Basics", text: "PowerPoint Basics" },
-        { value: "Hardcopy Configuration", text: "Hardcopy Configuration" }
-      ]
+      options: SeminarOptions.options
     };
   },
   methods: {
