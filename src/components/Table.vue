@@ -13,13 +13,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in data" :key="item.id">
+            <tr v-for="(item, index) in data" :key="index">
               <td>{{item.first_name}}</td>
               <td>{{item.last_name}}</td>
               <td>{{item.selected}}</td>
               <td>{{item.date}}</td>
               <td>
-              <!-- Edit Function is not completed yet -->
                 <b-button id="btn1" size="sm" v-on:click="editRow(index)" v-b-modal.window>Edit</b-button>
                 <b-button type="button" id="btn2" size="sm" v-on:click="deleteRow(index)">Delete</b-button>
               </td>
@@ -28,7 +27,7 @@
         </table>
         <!-- Modal Component -->
         <div>
-          <Modal :rowEntry=form_object></Modal>
+          <Modal :rowEntry=form_object :objectId=objectIndex></Modal>
         </div>
       </b-container>
     </div>
@@ -58,13 +57,15 @@ export default {
         last_name: "",
         selected: "",
         date: ""
-      }
+      },
+      objectIndex: ""
     };
   },
   methods: {
     editRow: function(index) {
       var selectedRow = getData("allEntries");
       this.form_object = selectedRow[index];
+      this.objectIndex = index;
       this.form_object[0] = this.form_object.first_name;
       this.form_object[1] = this.form_object.last_name;
       this.form_object[2] = this.form_object.selected;
@@ -77,7 +78,7 @@ export default {
       this.data = getData("allEntries");
     }
   },
-  components: { Modal }
+  components: { Modal },
 };
 </script>
 
@@ -90,5 +91,9 @@ export default {
 }
 #table2 {
   margin-top: 60px;
+}
+#btn1 {
+  background-color: #0e4094;
+  border-color: #0e4094;
 }
 </style>

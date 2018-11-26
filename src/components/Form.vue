@@ -57,6 +57,17 @@
 <script>
 import { SeminarOptions } from "../const.js"
 
+function getData(key) {
+  if (localStorage.getItem(key)) {
+    return JSON.parse(localStorage.getItem(key));
+  }
+  return [];
+}
+
+function saveData(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
 export default {
   name: "Form",
   data() {
@@ -84,7 +95,7 @@ export default {
         " .";
     },
     addData: function() {
-      var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+      var existingEntries = getData("allEntries");
       if (existingEntries == null) existingEntries = [];
 
       var form_item = {
@@ -94,9 +105,9 @@ export default {
         date: this.form.date
       };
 
-      localStorage.setItem("formData", JSON.stringify(form_item));
+      saveData("formData", form_item);
       existingEntries.push(form_item);
-      localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+      saveData("allEntries", existingEntries);
 
       this.form = { first_name: "", last_name: "", selected: null, date: "" };
     }
