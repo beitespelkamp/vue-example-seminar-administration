@@ -13,7 +13,7 @@
     "ajv": "^6.0.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.16",
-    "jquery": "^1.12.4",
+    "jquery": "^3.4.0",
     "vue": "^2.6.10",
     "vue-moment": "^4.0.0",
     "vue-router": "^3.0.1"
